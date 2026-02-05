@@ -57,7 +57,7 @@ const TodoItem = ({ i, todo, editTodo, removeTodo, toggleComplete }) => {
             value={isEditedText}
             onChange={(e) => setIsEditedText(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 px-3 py-1.5 bg-white/10 placeholder-white/10 
+            className="flex-1 w-full px-3 py-1.5 bg-white/10 placeholder-white/10 
             rounded-lg font-medium text-sm border border-white/10 focus:outline-none focus:ring-2 focus:ring-violet-500"
             autoFocus
           />
