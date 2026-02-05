@@ -1,6 +1,14 @@
 import { WandSparkles } from "lucide-react";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
+import NoTaskSkeleton from "../skeleton/NoTaskSkeleton";
 
 const NoTaskTemplate = () => {
+  const { isLoading } = useContext(AppContext);
+  
+  if (isLoading) {
+    return <NoTaskSkeleton />;
+  }
   return (
     <div className="backdrop-blur-2xl bg-white/5 text-center rounded-2xl border border-white/10 p-9">
       <div className="flex items-center justify-center w-16 h-16 mx-auto mb-3 bg-linear-to-br from-violet-500/20 to-fuchsia-500/20 rounded-2xl shadow-lg">

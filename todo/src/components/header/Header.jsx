@@ -1,7 +1,15 @@
 import { Sparkles, TrendingUp } from "lucide-react";
 import ProgressBar from "../progressBar/ProgressBar";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
+import HeaderSkeleton from "../skeleton/HeaderSkeleton";
 
 const Header = () => {
+  const { activeTodos, progress, isLoading } = useContext(AppContext);
+
+  if (isLoading) {
+    return <HeaderSkeleton />;
+  }
   return (
     <>
       <div
@@ -18,21 +26,25 @@ const Header = () => {
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full animate-ping" />
             </div>
             <div className="">
-              <h1 className="text-md sm:text-3xl font-black text-white">TaskFlow</h1>
-              <p className="text-[10px] sm:text-xs text-purple-300">Productivity Reimagined</p>
+              <h1 className="text-md sm:text-3xl font-black text-white">
+                TaskFlow
+              </h1>
+              <p className="text-[10px] sm:text-xs text-purple-300">
+                Productivity Reimagined
+              </p>
             </div>
           </div>
 
           {/* right */}
           <div className="flex items-center gap-2 px-3 sm:px-4 py-2 text-white font-bold bg-linear-to-br from-violet-500/20 to-fuchsia-500/20 border border-violet-400/30 rounded-full whitespace-nowrap">
             <TrendingUp size={16} className="text-emerald-400" />
-            <span className="text-xs sm:text-sm">{0} Active</span>
+            <span className="text-xs sm:text-sm">{activeTodos} Active</span>
           </div>
         </div>
 
         {/* ProgressBar */}
         <div className="relative">
-          <ProgressBar progress={100} />
+          <ProgressBar progress={progress} />
         </div>
       </div>
     </>

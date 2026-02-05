@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="min-h-screen bg-linear-to-br from-indigo-950 via-purple-950 to-pink-950 p-3 sm:p-6 relative overflow-hidden">
       <Animate />
-
       <div className="max-w-3xl mx-auto relative z-10">
         <Header />
         <Stats />

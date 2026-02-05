@@ -1,5 +1,3 @@
-import React from "react";
-
 const Animate = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -18,17 +16,18 @@ const Animate = () => {
         ></div>
       </div>
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {
-          [...Array(20)].map((_,i)=>(
-            <div key={i} className="absolute w-1 h-1 bg-white rounded-full opacity-20"
+        {[...Array(25)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full opacity-20"
             style={{
-              left:`${Math.random()*100}%`,
-              top:`${Math.random()*100}%`,
-              animation:`float ${5 + Math.random()*10}s ease-in-out infinite`,
-              animationDelay:`${Math.random()*5}s`,
-            }}></div>
-          ))
-        }
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float ${5 + Math.random() * 10}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          ></div>
+        ))}
       </div>
     </div>
   );
