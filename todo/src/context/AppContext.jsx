@@ -5,17 +5,11 @@ const STORAGE_KEY = "todos";
 
 const AppProvider = ({ children }) => {
   const [todos, setTodos] = useState(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : [];
-    } catch (e) {
-      console.log("LocalStorage read error:", e);
-      return [];
-    }
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
   });
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
 
   // ADD TODO
   const addTodo = () => {
@@ -61,7 +55,7 @@ const AppProvider = ({ children }) => {
       ? Math.min(100, Math.max(0, (completedTodos / todos.length) * 100))
       : 0;
 
- // 🔥 Fake loading only for UX (Skeleton)
+  // 🔥 Fake loading only for UX (Skeleton)
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -79,7 +73,6 @@ const AppProvider = ({ children }) => {
     }
   }, [todos]);
 
-
   return (
     <AppContext.Provider
       value={{
@@ -94,7 +87,7 @@ const AppProvider = ({ children }) => {
         activeTodos,
         completedTodos,
         progress,
-        isLoading
+        isLoading,
       }}
     >
       {children}
